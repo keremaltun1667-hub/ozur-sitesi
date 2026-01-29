@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Ceylin’e Bir Özür 💔</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ffb6c1, #ffc0cb, #ffe4e1);
+    overflow: hidden;
+}
+
+/* KALP YAĞMURU */
+.heart {
+    position: fixed;
+    top: -10px;
+    font-size: 20px;
+    animation: fall linear forwards;
+    z-index: 1;
+}
+@keyframes fall {
+    to { transform: translateY(110vh); opacity: 0; }
+}
+
+/* ANA ALAN */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    z-index: 2;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.96);
+    width: 90%;
+    max-width: 650px;
+    border-radius: 25px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+    overflow-y: auto;
+    max-height: 90vh;
+}
+
+h1 {
+    color: #ff3f8b;
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+p {
+    color: #444;
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+/* SLAYT */
+.slider {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    border-radius: 20px;
+    margin: 20px 0;
+}
+
+.slider img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s;
+}
+.slider img.active { opacity: 1; }
+
+button {
+    background: #ff69b4;
+    border: none;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+button:hover {
+    background: #ff1493;
+    transform: scale(1.05);
+}
+
+.secret {
+    display: none;
+    margin-top: 20px;
+    color: #ff2f7a;
+    font-size: 17px;
+    text-align: left;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<div class="card">
+
+<h1>Ceylin… 💔</h1>
+
+<p>
+Bu sayfayı senin için hazırladım.  
+Çünkü içimde kalanları saklamak istemedim.
+</p>
+
+<p>
+Ceylin, seni kırdığımı biliyorum.  
+Belki farkında olmadan, belki düşünmeden…  
+Ama sonuçta kalbini incittim ve bunun sorumluluğu bana ait.
+</p>
+
+<div class="slider">
+    <img src="https://drive.google.com/uc?export=view&id=1bPdYy2dAdxs2fHwzf_v4_j90EB-qlBs8" class="active">
+    <img src="https://drive.google.com/uc?export=view&id=1PQenjeNicN2vMxZjf-Uvyet7DFN38HkT">
+</div>
+
+<p>
+Bazen konuşmam gerekirken sustum,  
+bazen daha anlayışlı olmam gerekirken eksik kaldım.  
+Ama şunu bilmeni istiyorum: Bunların hiçbiri seni umursamadığımdan değildi.
+</p>
+
+<p>
+Seni üzmek istemedim Ceylin…  
+Ama üzdüm.  
+Ve bunun ağırlığını kalbimde taşıyorum.
+</p>
+
+<button onclick="showApology()">Devamını Oku 💗</button>
+
+<div class="secret" id="secret">
+
+<p>
+Ceylin, sen benim için sıradan biri değilsin.  
+Gülüşünle içimi rahatlatan,  
+sesinle günümü güzelleştiren birisin.
+</p>
+
+<p>
+Bazen hatalarım sevgimin önüne geçti,  
+ama sevgim hiçbir zaman eksilmedi.  
+Sadece doğru şekilde gösteremedim.
+</p>
+
+<p>
+Senden tek isteğim beni hemen affetmen değil…  
+Sadece şunu bilmeni istiyorum:  
+Değişmeye hazırım, daha dikkatli olmaya hazırım.
+</p>
+
+<p>
+Eğer bir şans daha verirsen,  
+seni üzen değil,  
+seni güvende hissettiren,  
+seni gerçekten mutlu etmeye çalışan biri olacağıma söz veriyorum.
+</p>
+
+<p style="text-align:center; font-size:20px;">
+Ceylin, seni çok seviyorum 💖  
+ve bu özür kalbimin en içinden…
+</p>
+
+</div>
+
+</div>
+</div>
+
+<script>
+/* SLAYT */
+let slides = document.querySelectorAll(".slider img");
+let index = 0;
+setInterval(() => {
+    slides[index].classList.remove("active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("active");
+}, 3000);
+
+/* MESAJ */
+function showApology() {
+    document.getElementById("secret").style.display = "block";
+}
+
+/* KALP YAĞMURU */
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = ["💔","💖","💗","💕","💘"][Math.floor(Math.random()*5)];
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+    heart.style.fontSize = (14 + Math.random() * 22) + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}, 400);
+</script>
+
+</body>
+</html>
